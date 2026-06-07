@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Scam Message Checker - Link Risk Scanner</title>
+  <meta name="description" content="Paste a suspicious SMS, WhatsApp message, email, or link and check whether it is safe to open." />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="Scam Message Checker home">
+      <span class="brand-mark">SMC</span>
+      <span>
+        <strong>Scam Message Checker</strong>
+        <small>Message + Link Risk Scanner</small>
+      </span>
+    </a>
+    <nav>
+      <a href="#checker">Checker</a>
+      <a href="#features">Features</a>
+      <a href="privacy.html">Privacy</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Free Cloudflare / GitHub Ready Tool</p>
+        <h1>Check suspicious messages and links before opening them.</h1>
+        <p class="lead">Paste an SMS, WhatsApp message, email, or URL. The tool explains the message, extracts links, expands redirects on Cloudflare, analyzes website risk, and gives a final decision: open or do not open.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#checker">Start Checking</a>
+          <a class="btn ghost" href="#features">See Active Features</a>
+        </div>
+      </div>
+      <aside class="hero-card">
+        <div class="score-ring" id="demoScore">?</div>
+        <h2>Final Decision</h2>
+        <p>Safe, suspicious, or dangerous verdict with reasons.</p>
+      </aside>
+    </section>
+
+    <section class="notice">
+      <strong>Privacy note:</strong> Do not paste OTPs, passwords, card numbers, passport/NID numbers, or full bank details. If the result is high risk, do not open the link.
+    </section>
+
+    <section class="ad-slot ad-top" aria-label="Advertisement placeholder">
+      <span>Ad Slot: Header Banner</span>
+      <small>Paste AdSense or third-party ad code here after approval.</small>
+    </section>
+
+    <section id="checker" class="checker-grid">
+      <div class="panel input-panel">
+        <div class="panel-head">
+          <h2>Scam Message Checker</h2>
+          <span class="badge">Clean Active Build</span>
+        </div>
+
+        <label for="messageInput">Paste suspicious message, email, or link</label>
+        <textarea id="messageInput" rows="10" placeholder="Example: Your bank account will be blocked today. Verify now: https://bit.ly/example">Your parcel is on hold. Pay a small delivery fee today to release it: https://bit.ly/example</textarea>
+
+        <div class="controls">
+          <label>
+            Output Language
+            <select id="languageSelect">
+              <option value="en">English</option>
+              <option value="bn">Bangla</option>
+              <option value="hi">Hindi</option>
+              <option value="ur">Urdu</option>
+            </select>
+          </label>
+          <label>
+            Message Type
+            <select id="messageType">
+              <option value="auto">Auto Detect</option>
+              <option value="sms">SMS</option>
+              <option value="whatsapp">WhatsApp</option>
+              <option value="email">Email</option>
+              <option value="social">Social Media</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="button-row">
+          <button id="analyzeBtn" class="btn primary" type="button">Analyze Now</button>
+          <button id="clearBtn" class="btn ghost" type="button">Clear</button>
+          <button id="copyBtn" class="btn ghost" type="button">Copy Report</button>
+        </div>
+
+        <p class="microcopy">Cloudflare Pages Functions enables redirect-chain, final URL, HTTP status, and security header checks. GitHub Pages runs static/basic mode only.</p>
+      </div>
+
+      <div class="panel result-panel" aria-live="polite">
+        <div class="panel-head">
+          <h2>Final Result</h2>
+          <span id="engineMode" class="badge neutral">Not scanned</span>
+        </div>
+        <div id="resultSummary" class="result-empty">Paste a message and click Analyze Now.</div>
+      </div>
+    </section>
+
+    <section class="results-layout" id="detailsSection" hidden>
+      <div class="panel">
+        <h2>Message Meaning</h2>
+        <div id="meaningBox"></div>
+      </div>
+      <div class="panel">
+        <h2>Detected Risk Signals</h2>
+        <ul id="signalsList" class="clean-list"></ul>
+      </div>
+      <div class="panel wide">
+        <h2>Link & Website Analysis</h2>
+        <div id="linksBox"></div>
+      </div>
+      <div class="panel">
+        <h2>Recommended Action</h2>
+        <div id="actionBox"></div>
+      </div>
+      <div class="panel">
+        <h2>Report Tools</h2>
+        <div class="mini-grid">
+          <button class="mini" id="printBtn" type="button">Print / Save PDF</button>
+          <button class="mini" id="downloadJsonBtn" type="button">Download JSON</button>
+          <button class="mini" id="shareBtn" type="button">Copy Share Text</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="ad-slot" aria-label="Advertisement placeholder">
+      <span>Ad Slot: Result Native Ad</span>
+      <small>Do not make ads look like scan, warning, or download buttons.</small>
+    </section>
+
+    <section id="features" class="panel feature-panel">
+      <div class="panel-head">
+        <h2>Included Active Features</h2>
+        <span class="badge">No Fake Placeholders</span>
+      </div>
+      <p class="microcopy">Only working or API-ready features are listed. Removed: WHOIS, domain age, IP geo, OCR, QR scan, website screenshot, community database, admin panel, and other placeholders.</p>
+      <div id="featureGrid" class="feature-grid"></div>
+    </section>
+
+    <section class="panel feature-panel">
+      <div class="panel-head">
+        <h2>Optional API Keys</h2>
+        <span class="badge neutral">Cloudflare Only</span>
+      </div>
+      <div class="kv">
+        <div class="kv-row"><strong>GOOGLE_SAFE_BROWSING_API_KEY</strong><span>Checks whether a URL matches Google Safe Browsing threat lists.</span></div>
+        <div class="kv-row"><strong>VIRUSTOTAL_API_KEY</strong><span>Checks VirusTotal URL reputation stats when the URL already has analysis data.</span></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Scam Message Checker is an educational risk-analysis tool. It cannot guarantee 100% safety. Use official apps/websites for banking, delivery, and government services.</p>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>
