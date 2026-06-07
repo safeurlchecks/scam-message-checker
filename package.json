@@ -1,0 +1,13 @@
+{
+  "name": "scam-message-checker",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Free Cloudflare Pages scam message and link risk checker.",
+  "scripts": {
+    "dev": "wrangler pages dev .",
+    "deploy": "wrangler pages deploy . --project-name=scam-message-checker"
+  },
+  "devDependencies": {
+    "wrangler": "latest"
+  }
+}
